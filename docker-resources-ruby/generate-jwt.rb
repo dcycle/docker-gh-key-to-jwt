@@ -32,5 +32,4 @@ payload = {
 
 jwt = JWT.encode(payload, private_key, "RS256")
 
-# puts payload
 puts jwt
