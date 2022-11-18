@@ -1,8 +1,8 @@
 #!/bin/sh
 #
-# See https://hub.docker.com/_/ruby.
 # See
 # https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps#authenticating-as-a-github-app.
+# See https://stackoverflow.com/a/64492227/1207752
 #
 set -e
 
@@ -10,7 +10,7 @@ echo ""
 # See http://patorjk.com/software/taag/#p=display&f=Ivrit&t=GH%20App%20PEM2JWT
 cat ./scripts/lib/my-ascii-art.txt
 echo ""
-echo "(RUBY)"
+echo "(JS)"
 echo ""
 
 if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
@@ -35,7 +35,7 @@ ls -lah "$FULL_PATH_TO_PEM"
 echo "Moving on"
 echo ""
 
-docker build -t gh-key-to-jwt .
+docker build -f="Dockerfile-js" -t gh-key-to-jwt .
 docker run \
   -e PEM_FILE="$PEM_FILE" \
   -e APP_ID="$APP_ID" \

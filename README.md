@@ -16,7 +16,12 @@ Clone this repo:
 
 Generate a JWT which expires after 10 minutes. This takes **three** arguments, first the path to the directory contain your private key ("/path/to"); second, the filename of your private key ("key.pem"); and third, your GitHub app's ID:
 
+    # This uses the ruby script
     ./scripts/generate-jwt.sh /path/to key.pem 12345
+
+TO use the Javascript script, you can use:
+
+    ./scripts/generate-jwt-js.sh /path/to key.pem 12345
 
 Resources
 -----

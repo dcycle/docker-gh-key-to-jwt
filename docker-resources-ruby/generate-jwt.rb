@@ -17,16 +17,20 @@ end
 # Private key contents
 private_pem = File.read(path_to_pem)
 private_key = OpenSSL::PKey::RSA.new(private_pem)
+iat = Time.now.to_i - 60;
+exp = Time.now.to_i + (10 * 60);
 
 # Generate the JWT
 payload = {
   # issued at time, 60 seconds in the past to allow for clock drift
-  iat: Time.now.to_i - 60,
+  iat: iat,
   # JWT expiration time (10 minute maximum)
-  exp: Time.now.to_i + (10 * 60),
+  exp: exp,
   # GitHub App's identifier
   iss: app_id
 }
 
 jwt = JWT.encode(payload, private_key, "RS256")
+
+# puts payload
 puts jwt

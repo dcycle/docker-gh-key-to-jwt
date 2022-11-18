@@ -1,0 +1,10 @@
+# See https://hub.docker.com/_/ruby.
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+COPY ./docker-resources-js .
+
+RUN npm install jsonwebtoken
+
+CMD ["node", "./generate-jwt.js"]
